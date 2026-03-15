@@ -1,0 +1,11 @@
+# SPA Fallback for React Router
+# This ensures all routes serve index.html with a 200 status code
+# Critical for Google to crawl /politica-de-privacidad and /politica-de-bioseguridad directly
+
+# Static files should be served normally (images, fonts, etc.)
+/assets/*  /assets/:splat  200
+/robots.txt  /robots.txt  200
+/sitemap.xml  /sitemap.xml  200
+
+# All other routes should serve index.html (SPA fallback)
+/*  /index.html  200

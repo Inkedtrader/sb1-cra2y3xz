@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #000000;
+  --color-secondary: #7FDBFF;
+  --color-accent1: #B19CD9;
+  --color-accent2: #FF9EB5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for fixed header navigation */
+section[id],
+footer[id] {
+  /* Reduced from 180px to 100px to stop closer to the section title */
+  scroll-margin-top: 100px; 
+}
+
+/* On mobile, usually the nav is smaller or we want less gap */
+@media (max-width: 768px) {
+  section[id],
+  footer[id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+body {
+  @apply bg-primary text-white font-alta;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(127, 219, 255, 0.15) 0%, rgba(177, 156, 217, 0.1) 50%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+}
+
+.nav-link {
+  @apply relative px-4 py-2 text-white transition-all duration-300 hover:text-secondary;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300;
+  box-shadow: 0 0 8px rgba(127, 219, 255, 0.6);
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.floating-button {
+  @apply transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
+  box-shadow: 0 4px 20px rgba(127, 219, 255, 0.3);
+}
+
+.floating-button:hover {
+  box-shadow: 0 8px 25px rgba(127, 219, 255, 0.5);
+}
+
+.hero-parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.portfolio-item {
+  @apply relative overflow-hidden rounded-lg;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(127, 219, 255, 0.3);
+}
+
+/* Portfolio image container with consistent aspect ratio */
+.portfolio-item > div {
+  /* Maintain 3:4 aspect ratio for consistent framing */
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  /* Ensure container doesn't collapse */
+  min-height: 0;
+}
+
+.portfolio-item img {
+  /* Ensure consistent image rendering across all viewports */
+  transition: transform 0.5s ease;
+  object-fit: cover;
+  object-position: center;
+  /* Prevent image shifting during load */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-overlay {
+  @apply absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  @apply opacity-100;
+}
+
+.form-input {
+  @apply w-full bg-gray-900 border border-gray-800 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary transition-all duration-300;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 15px rgba(127, 219, 255, 0.3);
+}
+
+.glow-on-hover {
+  @apply relative overflow-hidden;
+}
+
+.glow-on-hover::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-secondary via-accent1 to-accent2 opacity-0 transition-opacity duration-300;
+  z-index: -1;
+}
+
+.glow-on-hover:hover::before {
+  @apply opacity-30;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Lighthouse beam effect */
+@keyframes lighthouse-beam {
+  0% {
+    opacity: 0.8;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-gold::before {
+  content: '';
+  position: absolute;
+  top: -80%;
+  left: -50%;
+  width: 285%;
+  height: 380%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 0, 0.6) 0%,
+    rgba(255, 215, 0, 0.4) 25%,
+    rgba(255, 215, 0, 0.2) 35%,
+    transparent 45%
+  );
+  transform: translateY(-50%);
+  animation: lighthouse-beam 2.5s linear infinite;
+}
+
+@media (max-width: 767px) {
+  #inicio {
+    transform: none !important;
+  }
+}
