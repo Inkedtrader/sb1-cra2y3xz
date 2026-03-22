@@ -56,6 +56,7 @@ const HomePage: React.FC = () => {
         <Hero />
         <Portfolio />
 
+        {/* Section: Sobre Mi - Optimized for Performance and Accessibility */}
         <section id="sobre-mi" className="relative z-30 py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-black to-gray-900">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -68,7 +69,7 @@ const HomePage: React.FC = () => {
               <div className="md:w-1/2">
                 <img
                   src="/assets/Keren_Studio_Quito.webp"
-                  alt="Keren Frost, tatuadora profesional en Quito, trabajando en Frost Studio: estudio privado de tatuajes y piercings profesional constituido bajo el régimen RIMPE en Quito Centro Norte."
+                  alt="Keren Frost trabajando en su estudio de tatuajes profesional en Quito"
                   className="rounded-lg shadow-2xl w-full h-auto object-cover"
                   fetchPriority="high"
                   width="475"
@@ -77,23 +78,32 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="md:w-1/2">
-                <h2 className="text-4xl md:text-5xl font-stylish mb-6 text-secondary">Un poco sobre mí</h2>
-                <p className="text-lg mb-6 text-gray-300 font-alta tracking-wide">
+                <h2 className="text-4xl md:text-5xl font-stylish mb-6 text-white">Un poco sobre mí</h2>
+                
+                <p className="text-lg mb-6 text-gray-100 font-alta tracking-wide">
                   Soy <strong>tatuadora profesional en Quito</strong>, especializada en tatuajes personalizados hechos desde cero.
                 </p>
-                <p className="text-lg mb-6 text-gray-300 font-alta tracking-wide">
+                <p className="text-lg mb-6 text-gray-100 font-alta tracking-wide">
                   Cada diseño es único y trabajado con criterio técnico y estético en estilos como <strong>línea fina, neotradicional, acuarela y cover-ups</strong>, siempre bajo estándares de bioseguridad y legalidad (RIMPE).
                 </p>
                 
-                <p className="text-lg mb-8 text-gray-300 font-alta tracking-wide">
+                <p className="text-lg mb-8 text-gray-100 font-alta tracking-wide">
                   Atiendo solo con cita previa, dedicando el tiempo necesario a cada sesión para que el proceso sea claro, seguro y sin apuros.
                 </p>
 
                 <div className="flex space-x-4">
-                   <a href="#portafolio" className="floating-button bg-transparent border border-secondary text-secondary px-6 py-3 rounded-full font-stylish hover:bg-secondary hover:text-black transition-all duration-300">
+                   <a 
+                     href="#portafolio" 
+                     aria-label="Ver el portafolio de tatuajes de Keren Frost"
+                     className="floating-button bg-transparent border border-secondary text-secondary px-6 py-3 rounded-full font-stylish hover:bg-secondary hover:text-black transition-all duration-300"
+                   >
                      Ver mi trabajo
                    </a>
-                   <a href="#reservar" className="floating-button bg-secondary text-black px-6 py-3 rounded-full font-stylish hover:bg-white transition-all duration-300">
+                   <a 
+                     href="#reservar" 
+                     aria-label="Reservar una sesión de tatuaje en Frost Studio"
+                     className="floating-button bg-secondary text-black px-6 py-3 rounded-full font-stylish hover:bg-white transition-all duration-300"
+                   >
                      Reservar sesión
                    </a>
                 </div>
