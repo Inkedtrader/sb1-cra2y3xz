@@ -67,10 +67,12 @@ const HomePage: React.FC = () => {
             >
               <div className="md:w-1/2">
                 <img
-                  src="/assets/KerenFrost_tatuando_en_su_estudio_privado_en_Quito.jpg"
+                  src="/assets/Keren_Studio_Quito.webp"
                   alt="Keren Frost, tatuadora profesional en Quito, trabajando en Frost Studio: estudio privado de tatuajes y piercings profesional constituido bajo el régimen RIMPE en Quito Centro Norte."
                   className="rounded-lg shadow-2xl w-full h-auto object-cover"
-                  loading="lazy"
+                  fetchPriority="high"
+                  width="475"
+                  height="631"
                   decoding="async"
                 />
               </div>
