@@ -15,6 +15,10 @@
       "source": "/(.*)",
       "headers": [
         {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        },
+        {
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://connect.facebook.net https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.com.ec; connect-src 'self' https://vitals.vercel-analytics.com https://www.facebook.com https://googleads.g.doubleclick.net; frame-src 'self' https://www.facebook.com;"
         },
