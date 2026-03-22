@@ -28,17 +28,13 @@ const Footer: React.FC = () => {
   const footerMessage = "Hola Keren! Llegué al final de tu portafolio web y me decidí: quiero agendar una cita. ¿Me ayudas con info";
   const footerWaUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(footerMessage)}`;
 
-useEffect(() => {
+  useEffect(() => {
     const triggerHighlight = () => {
-      // 1. Force reset: This tells Framer Motion to "stop" so it can "start" again
       setHighlightSocial(false);
-
-      // 2. Wait 150ms: Gives React time to process the "stop" before starting
       const startTimer = setTimeout(() => {
         setHighlightSocial(true);
       }, 150);
 
-      // 3. Duration: Turn off after 4 seconds
       const endTimer = setTimeout(() => {
         setHighlightSocial(false);
         sessionStorage.removeItem('highlightSocial');
@@ -50,13 +46,9 @@ useEffect(() => {
       };
     };
 
-    // Listen for the URL change (Standard way)
     window.addEventListener('hashchange', triggerHighlight);
-    
-    // Listen for the "Direct Ping" from the button (Repeat click way)
     window.addEventListener('forceSocialHighlight', triggerHighlight);
 
-    // Initial check (On page load/mount)
     if (sessionStorage.getItem('highlightSocial')) {
       triggerHighlight();
     }
@@ -111,11 +103,11 @@ useEffect(() => {
               </li>
               <li>
                <a 
-  href="https://www.google.com/maps/search/?api=1&query=Frost+Tattoo+Studio+Quito&query_place_id=ChIJOcuGia2b1ZERjIoOup1Jx9s" 
-  target="_blank" 
-  rel="noopener noreferrer" 
-  className="flex items-start text-gray-400 hover:text-secondary transition-colors"
->
+                href="https://www.google.com/maps?q=Luis+Coloma+N44-67+e+Isla+Isabela,+Quito" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-start text-gray-400 hover:text-secondary transition-colors"
+              >
                   <MapPin size={18} className="text-secondary mr-2 mt-1" />
                   <span>Luis Coloma N44-67 e Isla Isabela, Quito 170501</span>
                 </a>
@@ -123,7 +115,7 @@ useEffect(() => {
             </ul>
             <div id="social-links" className="flex space-x-4 pt-4">
               <motion.a
-                href="https://www.instagram.com/frosttattoo_uio"
+                href="https://www.instagram.com/froststudio_ink"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-secondary transition-colors relative"
@@ -143,7 +135,7 @@ useEffect(() => {
                 <Instagram size={20} />
               </motion.a>
               <motion.a
-                href="https://www.facebook.com/Kerenfrost.tattoo?locale=es_LA"
+                href="https://www.facebook.com/Kerenfrost.tattoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-secondary transition-colors relative"
