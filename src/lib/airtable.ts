@@ -20,9 +20,8 @@ export async function submitBooking(fields: BookingFields): Promise<void> {
       Authorization: `Bearer ${AIRTABLE_TOKEN}`,
       'Content-Type': 'application/json',
     },
- body: JSON.stringify({
-      fields: fields, // Send the object directly
-    }),
+    body: JSON.stringify({
+      fields: fields, // Correct structure for a single record POST
     }),
   });
 
