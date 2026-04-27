@@ -292,3 +292,4 @@ const BookingForm: React.FC = () => {
 };
 
 export default BookingForm;
+
