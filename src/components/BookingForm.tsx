@@ -44,14 +44,14 @@ const BookingForm: React.FC = () => {
     setError(null);
 
     try {
-      await submitBooking({
-        nombre: formData.name,
-        telefono: formData.phone,
-        fecha_preferida: formData.date,
-        area_cuerpo: formData.bodyArea,
-        descripcion: formData.description,
-        tamano: formData.size,
-      });
+     await submitBooking({
+  nombre: formData.name,
+  telefono: formData.phone,
+  fecha_preferida: formData.date,
+  area_cuerpo: formData.bodyArea, // Matches your Airtable column exactly
+  tamano: formData.size,         // Matches your Airtable column exactly
+  descripcion: formData.description, // Added the 'i' and 'o' to match image_a21514.png
+});
 
       // Fire Meta Pixel Lead event only after confirmed Airtable write
       if (!pixelFired && typeof window.fbq === 'function') {
