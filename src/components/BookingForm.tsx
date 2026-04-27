@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { supabase } from '../lib/supabase';
+import { submitBooking } from '../lib/airtable';
 
 declare global {
   interface Window {
@@ -44,23 +44,16 @@ const BookingForm: React.FC = () => {
     setError(null);
 
     try {
-      // Map form fields to database columns
-      const { error: insertError } = await supabase
-        .from('booking_requests')
-        .insert([
-          {
-            nombre: formData.name,
-            telefono: formData.phone,
-            fecha_preferida: formData.date,
-            area_cuerpo: formData.bodyArea,
-            descripcion: formData.description,
-            tamano: formData.size
-          }
-        ]);
+      await submitBooking({
+        nombre: formData.name,
+        telefono: formData.phone,
+        fecha_preferida: formData.date,
+        area_cuerpo: formData.bodyArea,
+        descripcion: formData.description,
+        tamano: formData.size,
+      });
 
-      if (insertError) throw insertError;
-
-      // Fire Meta Pixel Lead event after successful database insert
+      // Fire Meta Pixel Lead event only after confirmed Airtable write
       if (!pixelFired && typeof window.fbq === 'function') {
         try {
           window.fbq('track', 'Lead', {
